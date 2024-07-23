@@ -1,11 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import SelectThemeView from '@/components/views/settingsViews/SelectThemeView'
+import SelectLanguageView from '@/components/views/settingsViews/SelectLanguageView'
 
 const Settings = () => {
     return (
-        <View style={styles.view}>
+        <ScrollView style={styles.view}>
             <Text>Settings</Text>
-        </View>
+            <Text>
+                1. chnage theme
+                1. choose language
+                3. update profile
+            </Text>
+            <SelectThemeView/>
+            <SelectLanguageView />
+        </ScrollView>
     )
 }
 
@@ -13,6 +22,8 @@ export default Settings
 
 const styles = StyleSheet.create({
     view: {
-        backgroundColor: 'white'
+        // display: 'flex',
+        backgroundColor: 'white',
+        // justifyContent: 'center',
     }
 })

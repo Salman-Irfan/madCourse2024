@@ -34,16 +34,28 @@ export default function TabLayout() {
           ),
         }}
       />
-      {/* settings apni khud ki */}
+      {/* settings apni khud ki start*/}
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
-          ),
-        }}
-      />
+            ),
+          }}
+          />
+          {/* settings apni khud ki end*/}
+      {/* auth apni khud ki start*/}
+      <Tabs.Screen
+        name="auth"
+        options={{
+          title: 'Auth',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'alert' : 'alert-outline'} color={color} />
+            ),
+          }}
+          />
+          {/* auth apni khud ki end*/}
     </Tabs>
   );
 }
