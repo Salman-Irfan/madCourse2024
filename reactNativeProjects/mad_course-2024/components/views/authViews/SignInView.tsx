@@ -5,6 +5,7 @@ const SignInView = () => {
     return (
         <View>
             <Text>SignInView</Text>
+            {/* <anyOtherView/> */}
         </View>
     )
 }

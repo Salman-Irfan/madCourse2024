@@ -40,7 +40,7 @@ export default function TabLayout() {
         options={{
           title: 'Settings',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
+            <TabBarIcon name={focused ? 'airplane-sharp' : 'settings-outline'} color={color} />
             ),
           }}
           />
@@ -51,7 +51,7 @@ export default function TabLayout() {
         options={{
           title: 'Auth',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'alert' : 'alert-outline'} color={color} />
+            <TabBarIcon name={focused ? 'finger-print' : 'finger-print-outline'} color={color} />
             ),
           }}
           />
