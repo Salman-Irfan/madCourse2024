@@ -4,6 +4,8 @@ import SelectThemeView from '@/components/views/settingsViews/SelectThemeView'
 import SelectLanguageView from '@/components/views/settingsViews/SelectLanguageView'
 import { GestureHandlerRootView, TapGestureHandler } from 'react-native-gesture-handler'
 import { Link } from 'expo-router'
+import { PRODUCT_OWNER as PRODUCT_OWNER_ABC } from '@/constants/ownerAbc'
+import { PRODUCT_OWNER as PRODUCT_OWNER_XYZ } from '@/constants/ownerXyz'
 
 const Settings = () => {
     // state variables
@@ -31,7 +33,10 @@ const Settings = () => {
 
 
         <ScrollView style={styles.view}>
-            <Text>Settings</Text>
+            <Text>Settings
+                {PRODUCT_OWNER_ABC}
+                {PRODUCT_OWNER_XYZ}
+            </Text>
             <Text>
                 1. chnage theme
                 1. choose language
