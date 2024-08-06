@@ -7,8 +7,11 @@ import SignInView from '@/components/views/authViews/SignInView'
 const Auth = () => {
     return (
         <AuthScreenLayout>
-            <SignUpView/>
-            <SignInView/>
+            
+
+                <SignUpView />
+                <SignInView />
+            
         </AuthScreenLayout>
     )
 }

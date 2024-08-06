@@ -1,4 +1,4 @@
-import { Button, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, Button, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import SelectThemeView from '@/components/views/settingsViews/SelectThemeView'
 import SelectLanguageView from '@/components/views/settingsViews/SelectLanguageView'
@@ -6,6 +6,7 @@ import { GestureHandlerRootView, TapGestureHandler } from 'react-native-gesture-
 import { Link } from 'expo-router'
 import { PRODUCT_OWNER as PRODUCT_OWNER_ABC } from '@/constants/ownerAbc'
 import { PRODUCT_OWNER as PRODUCT_OWNER_XYZ } from '@/constants/ownerXyz'
+import axios from 'axios'
 
 const Settings = () => {
     // state variables
@@ -28,6 +29,18 @@ const Settings = () => {
     const callDoubeTap = () => {
         console.log(`double tap pressed`)
         setCounter(counter * 2)
+    }
+    // handleRetrieveData
+    const handleRetrieveData = async () => {
+        try {
+            const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/1`)
+            // console.log(response)
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+            Alert.alert(`interna server error`)
+        }
+        
     }
     return (
 
@@ -69,8 +82,9 @@ const Settings = () => {
             </GestureHandlerRootView>
             <SelectThemeView />
             <SelectLanguageView />
-            
-            
+
+            <Button title='Retrieve Data' onPress={handleRetrieveData} />
+
         </ScrollView>
 
     )
