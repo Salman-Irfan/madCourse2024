@@ -30,7 +30,7 @@ const Shop = () => {
 
     return (
         <SafeAreaView>
-            <View>
+            <View >
                 <Text>Shop</Text>
                 {/* title start */}
                 <TextInput
