@@ -30,7 +30,6 @@ const Products = () => {
     );
 
 
-
     const handleProductPress = (productId: any) => {
         router.push(`/productDetails/?productId=${productId}`)
     }

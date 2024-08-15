@@ -1,9 +1,10 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { deleteDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '@/config/firebaseConfig';
+import { useFocusEffect } from '@react-navigation/native';
 
 const ProductDetails = () => {
     const router = useRouter(); // Use the useRouter hook
@@ -33,6 +34,12 @@ const ProductDetails = () => {
         fetchProductDetails();
     }, []);
 
+    useFocusEffect(
+        useCallback(() => {
+            fetchProductDetails();
+        }, [])
+    );
+
     useEffect(() => {
         console.log('Updated Product Details:', productDetails); // Log whenever productDetails changes
     }, [productDetails]);
@@ -42,6 +49,10 @@ const ProductDetails = () => {
         await deleteDoc(productDocRef);
         alert('Product deleted successfully');
         router.back()
+    }
+
+    const handleProductUpdateNavigation = () => {
+        router.push(`/updateProduct/?productId=${productId}`)
     }
 
     return (
@@ -56,6 +67,7 @@ const ProductDetails = () => {
                         <Text>Description: {productDetails.description}</Text>
                         {/* action buttons */}
                         <Button title='Delete' onPress={() => handleProductDelete(productId)} />
+                        <Button title='Update' onPress={handleProductUpdateNavigation} />
                     </View>
                 ) : (
                     <Text>Loading product details...</Text>
