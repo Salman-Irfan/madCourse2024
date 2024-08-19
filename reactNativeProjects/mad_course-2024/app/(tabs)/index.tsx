@@ -1,14 +1,38 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Button } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { PRODUCT_OWNER as PRODUCT_OWNER_XYZ} from '@/constants/ownerXyz';
+import { PRODUCT_OWNER as PRODUCT_OWNER_XYZ } from '@/constants/ownerXyz';
+import { useEffect, useState } from 'react';
 
 
 export default function HomeScreen() {
   
+
+  const didMount = () => {
+    console.log(`component did mount`)
+  }
+  const willUnMount = () => {
+    console.log(`compinent will unmount`)
+  }
+
+  // did update
+  const [first, setfirst] = useState(1)
+  const [second, setSecond] = useState(2)
+  const [third, setThird] = useState(3)
+  useEffect(() => {
+    // component did mount
+    didMount()
+
+    return () => {
+      // second
+      console.log(`compinent will unmount`)
+    }
+  }, [first, third])
+
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -22,6 +46,12 @@ export default function HomeScreen() {
         <ThemedText type="title">
           Welcome!
           {PRODUCT_OWNER_XYZ}
+          {first}
+          {second}
+          {third}
+          <Button title={`update first`} onPress={()=>setfirst(first+1)} />
+          <Button title={`update second`} onPress={()=>setSecond(second+1)} />
+          <Button title={`update third`} onPress={()=>setThird(third+1)} />
         </ThemedText>
         <HelloWave />
       </ThemedView>
